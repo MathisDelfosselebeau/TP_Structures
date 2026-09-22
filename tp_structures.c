@@ -25,10 +25,14 @@ int main(void) {
     printf("Combien d'equipements voulez-vous gerer ? ");
     scanf("%d", &n);
 
-    // TODO: Allocation dynamique du parc
-    // mon_parc = allouer_parc(...);
+    // Allocation dynamique du parc
+    mon_parc = allouer_parc(n);
 
-    // TODO: Verification du pointeur (NULL ?)
+    // Verification du pointeur
+    if (mon_parc == NULL) {
+        printf("Erreur : impossible d'allouer la memoire.\n");
+        return 1;
+    }
 
     // TODO: Saisie des equipements
     // saisir_parc(...);
@@ -43,8 +47,8 @@ int main(void) {
     // TODO: Re-affichage pour verification
     // afficher_parc(...);
 
-    // TODO: Liberation de la mémoire
-    // free(...);
+    // Liberation de la mémoire
+    free(mon_parc);
 
     printf("\nMemoire liberee avec succes.\n");
     return 0;
@@ -55,8 +59,15 @@ int main(void) {
 // --------------------------------------------------
 
 Equipement* allouer_parc(int nb_equipements) {
-    // TODO: Utiliser malloc et vérifier si l'allocation a réussi
-    return NULL;
+    Equipement *parc;
+
+    parc = malloc(nb_equipements * sizeof(Equipement));
+
+    if (parc == NULL) {
+        return NULL;
+    }
+
+    return parc;
 }
 
 void saisir_parc(Equipement *parc, int nb_equipements) {
