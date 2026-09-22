@@ -32,11 +32,10 @@ int main(void) {
         return 1;
     }
 
-    // Saisie des equipements
     saisir_parc(mon_parc, n);
 
-    // TODO: Affichage du parc
-    // afficher_parc(...);
+    // Affichage du parc
+    afficher_parc(mon_parc, n);
 
     // TODO: Changement d'etat du premier equipement
     // printf("\nChangement d'etat du premier equipement...\n");
@@ -86,7 +85,20 @@ void saisir_parc(Equipement *parc, int nb_equipements) {
 }
 
 void afficher_parc(const Equipement *parc, int nb_equipements) {
-    // TODO: Parcourir le tableau et afficher les informations
+    printf("\n--- LISTE DES EQUIPEMENTS ---\n");
+
+    for (int i = 0; i < nb_equipements; i++) {
+        printf("ID: %d | Nom: %s | IP: %s | Etat: ",
+               parc[i].id,
+               parc[i].nom,
+               parc[i].ip);
+
+        if (parc[i].est_actif == 1) {
+            printf("ACTIF\n");
+        } else {
+            printf("INACTIF\n");
+        }
+    }
 }
 
 void changer_etat(Equipement *eq) {
